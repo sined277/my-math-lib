@@ -10,7 +10,7 @@ import java.util.HashMap
 class MyMathLibPackage : BaseReactPackage() {
 
   companion object {
-    const val MODULE_NAME = "MyMathLib"  // Define the module name here
+    const val MODULE_NAME = "MyMathLib" 
   }
 
   override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? {
