@@ -8,8 +8,13 @@ import com.facebook.react.module.model.ReactModuleInfoProvider
 import java.util.HashMap
 
 class MyMathLibPackage : BaseReactPackage() {
+
+  companion object {
+    const val MODULE_NAME = "MyMathLib"  // Define the module name here
+  }
+
   override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? {
-    return if (name == MyMathLibModule.NAME) {
+    return if (name == MODULE_NAME) {
       MyMathLibModule(reactContext)
     } else {
       null
@@ -19,14 +24,14 @@ class MyMathLibPackage : BaseReactPackage() {
   override fun getReactModuleInfoProvider(): ReactModuleInfoProvider {
     return ReactModuleInfoProvider {
       val moduleInfos: MutableMap<String, ReactModuleInfo> = HashMap()
-      moduleInfos[MyMathLibModule.NAME] = ReactModuleInfo(
-        MyMathLibModule.NAME,
-        MyMathLibModule.NAME,
+      moduleInfos[MODULE_NAME] = ReactModuleInfo(
+        MODULE_NAME,
+        MODULE_NAME,
         false,  // canOverrideExistingModule
         false,  // needsEagerInit
-        true,  // hasConstants
+        true,   // hasConstants
         false,  // isCxxModule
-        true // isTurboModule
+        true    // isTurboModule
       )
       moduleInfos
     }

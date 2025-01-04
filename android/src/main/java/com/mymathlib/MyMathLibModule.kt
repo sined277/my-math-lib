@@ -1,23 +1,41 @@
 package com.mymathlib
 
+import com.facebook.react.bridge.Callback
 import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.module.annotations.ReactModule
+import com.facebook.react.bridge.ReactContextBaseJavaModule
+import com.facebook.react.bridge.ReactMethod
 
-@ReactModule(name = MyMathLibModule.NAME)
-class MyMathLibModule(reactContext: ReactApplicationContext) :
-  NativeMyMathLibSpec(reactContext) {
+class MyMathLibModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
-  override fun getName(): String {
-    return NAME
-  }
+    @ReactMethod
+    fun add(a: Double, b: Double, callback: Callback) {
+        val result = a + b
+        callback.invoke(result)
+    }
 
-  // Example method
-  // See https://reactnative.dev/docs/native-modules-android
-  override fun multiply(a: Double, b: Double): Double {
-    return a * b
-  }
+    @ReactMethod
+    fun subtract(a: Double, b: Double, callback: Callback) {
+        val result = a - b
+        callback.invoke(result)
+    }
 
-  companion object {
-    const val NAME = "MyMathLib"
-  }
+    @ReactMethod
+    fun multiply(a: Double, b: Double, callback: Callback) {
+        val result = a * b
+        callback.invoke(result)
+    }
+
+    @ReactMethod
+    fun divide(a: Double, b: Double, callback: Callback) {
+        if (b == 0.0) {
+            callback.invoke("Error", "Division by zero is not allowed")
+        } else {
+            val result = a / b
+            callback.invoke(result)
+        }
+    }
+
+    override fun getName(): String {
+        return "MyMathLib"
+    }
 }
