@@ -18,11 +18,12 @@ RCT_EXPORT_MODULE()
     return result;
 }
 
-- (NSDictionary *)divide:(double)a b:(double)b {
+- (id)divide:(double)a b:(double)b {
     if (b == 0) {
-        return @{@"error": @"Division by zero is not allowed"};
+        return @"Division by zero is not allowed";
     }
-    return @{@"result": @(a / b)};
+    
+    return @(a / b);
 }
 
 
