@@ -8,7 +8,7 @@ export function add(a: number, b: number): number {
   return MyMathLib.add(a, b);
 }
 
-export function divide(a: number, b: number): number | string {
+export function divide(a: number, b: number): number {
   return MyMathLib.divide(a, b);
 }
 
