@@ -9,11 +9,17 @@ export function add(a: number, b: number): number {
 }
 
 export function divide(a: number, b: number): number | string {
-  if (b === 0) {
-    // throw new Error("Divide by zero isn't allowed");
-    return 'Division by zero is not allowed';
+  const response = MyMathLib.divide(a, b);
+
+  if (response?.error) {
+    return response.error;
   }
-  return MyMathLib.divide(a, b);
+
+  if (response?.result !== undefined) {
+    return response.result as number;
+  }
+
+  throw new Error('Unexpected response from MyMathLib.divide');
 }
 
 export function subtract(a: number, b: number): number {

@@ -18,13 +18,13 @@ RCT_EXPORT_MODULE()
     return result;
 }
 
-- (id)divide:(double)a b:(double)b {
+- (NSDictionary *)divide:(double)a b:(double)b {
     if (b == 0) {
-        return @"Error: Division by zero";
+        return @{@"error": @"Division by zero is not allowed"};
     }
-    NSNumber *result = @(a / b);
-    return result;
+    return @{@"result": @(a / b)};
 }
+
 
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:
     (const facebook::react::ObjCTurboModule::InitParams &)params {
