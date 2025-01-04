@@ -9,17 +9,18 @@ export function add(a: number, b: number): number {
 }
 
 export function divide(a: number, b: number): number | string {
-  const response = MyMathLib.divide(a, b);
+  return MyMathLib.add(a, b);
+  // const response = MyMathLib.divide(a, b);
 
-  if (response?.error) {
-    return response.error;
-  }
+  // if (response?.error) {
+  //   return response.error;
+  // }
 
-  if (response?.result !== undefined) {
-    return response.result as number;
-  }
+  // if (response?.result !== undefined) {
+  //   return response.result as number;
+  // }
 
-  throw new Error('Unexpected response from MyMathLib.divide');
+  // throw new Error('Unexpected response from MyMathLib.divide');
 }
 
 export function subtract(a: number, b: number): number {
