@@ -19,11 +19,10 @@ RCT_EXPORT_MODULE()
 }
 
 - (id)divide:(double)a b:(double)b {
-    if (b == 0) {
-        return @"Division by zero is not allowed";
-    }
-    
-    return @(a / b);
+    if (a == 0) return 0
+    else if (b == 0) return @"Division by zero is not allowed";
+    NSNumber *result = @(a / b);
+    return result
 }
 
 
