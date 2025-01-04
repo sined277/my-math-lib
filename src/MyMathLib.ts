@@ -19,11 +19,15 @@ export const multiply = (a: number, b: number): Promise<number> =>
 
 export const divide = (a: number, b: number): Promise<number | string> =>
   new Promise((resolve, reject) => {
-    MyMathLib.divide(a, b, (result: number | string) => {
-      if (typeof result === 'string') {
-        reject(result);
-      } else {
-        resolve(result);
-      }
-    });
+    if (b === 0) {
+      reject('Cannot divide by zero');
+    } else {
+      MyMathLib.divide(a, b, (result: number | string) => {
+        if (typeof result === 'string') {
+          reject(result);
+        } else {
+          resolve(result);
+        }
+      });
+    }
   });
