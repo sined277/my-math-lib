@@ -1,37 +1,23 @@
 package com.mymathlib
 
 import com.facebook.react.bridge.ReactApplicationContext
-import com.facebook.react.bridge.ReactContextBaseJavaModule
-import com.facebook.react.bridge.ReactMethod
-import com.facebook.react.bridge.Promise
+import com.facebook.react.module.annotations.ReactModule
 
-class MathModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+@ReactModule(name = MyMathLibModule.NAME)
+class MyMathLibModule(reactContext: ReactApplicationContext) :
+  NativeMyMathLibSpec(reactContext) {
 
-    override fun getName(): String {
-        return "MathModule"
-    }
+  override fun getName(): String {
+    return NAME
+  }
 
-    @ReactMethod
-    fun add(a: Double, b: Double, promise: Promise) {
-        promise.resolve(a + b)
-    }
+  // Example method
+  // See https://reactnative.dev/docs/native-modules-android
+  override fun multiply(a: Double, b: Double): Double {
+    return a * b
+  }
 
-    @ReactMethod
-    fun subtract(a: Double, b: Double, promise: Promise) {
-        promise.resolve(a - b)
-    }
-
-    @ReactMethod
-    fun multiply(a: Double, b: Double, promise: Promise) {
-        promise.resolve(a * b)
-    }
-
-    @ReactMethod
-    fun divide(a: Double, b: Double, promise: Promise) {
-        if (b == 0.0) {
-            promise.reject("DIVIDE_BY_ZERO", "Cannot divide by zero")
-        } else {
-            promise.resolve(a / b)
-        }
-    }
+  companion object {
+    const val NAME = "MyMathLib"
+  }
 }
